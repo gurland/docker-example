@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Docker example</title>
+</head>
+<body>
+<center>
+    <form action="/" method="post">
+        <input type="text" name="text" placeholder="Введите текст для поста">
+        <input type="submit">
+    </form>
+
+    <h1>Посты</h1>
+    <hr>
+
+    {% for tweet in tweets %}
+        <p>{{ tweet.text }}</p>
+    {% endfor %}
+</center>
+</body>
+</html>
