@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect
 
 from models import Tweet
+from tasks import post_tweets
 
 app = Flask(__name__)
 
@@ -15,6 +16,12 @@ def index():
         if tweet_text:
             Tweet.create(text=tweet_text)
         return redirect('/')
+
+
+@app.route("/post_tweets")
+def telegram_post():
+    post_tweets.delay()
+    return 'Репостинг успешно запущен'
 
 
 if __name__ == "__main__":
