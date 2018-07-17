@@ -1,0 +1,6 @@
+psycopg2==2.7.3.2
+peewee
+flask
+tgb
+celery
+redis

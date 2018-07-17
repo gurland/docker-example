@@ -1,0 +1,2 @@
+TOKEN = '123:XXXXX'
+CHANNEL_NAME = '@xxx'

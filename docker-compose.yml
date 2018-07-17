@@ -1,0 +1,27 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+    - "80:80"
+    environment:
+      BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: test
+
+  redis:
+    image: redis
+
+  celery:
+    build: .
+    command: celery worker -A tasks --loglevel INFO
+    depends_on:
+      - "db"
+    environment:
+      BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
